@@ -1,6 +1,6 @@
 
 "use client"
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Layout from "@/components/layout/Layout"
@@ -9,39 +9,10 @@ import Image from "next/image"
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [userInteracted, setUserInteracted] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-
-    const handleLoadedData = () => {
-      console.log("✅ Video loaded successfully")
-    }
-
-    const handleError = (e: Event) => {
-      console.error("❌ Video error:", e)
-    }
-
-    const handlePlay = () => {
-      console.log("▶️ Video started playing")
-    }
-
-    const handlePause = () => {
-      console.log("⏸️ Video paused")
-    }
-
-    const handleLoadStart = () => {
-      console.log("🔄 Video load started")
-    }
-
-    const handleCanPlay = () => {
-      console.log("✅ Video can play, attempting autoplay...")
-      // Small delay to ensure video is fully ready
-      setTimeout(() => {
-        attemptPlay()
-      }, 100)
-    }
 
     const attemptPlay = async () => {
       try {
@@ -52,22 +23,22 @@ export default function Home() {
         const playPromise = video.play()
         if (playPromise !== undefined) {
           await playPromise
-          console.log("🎉 Autoplay successful!")
+          console.log("🎉 Video autoplay successful!")
         }
       } catch (error) {
-        console.log("⚠️ Autoplay blocked by browser:", error)
-        console.log("💡 User interaction required to play video")
-        setUserInteracted(false)
+        console.log("⚠️ Autoplay blocked, user interaction required:", error)
       }
     }
 
-    // Add event listeners
-    video.addEventListener('loadeddata', handleLoadedData)
-    video.addEventListener('error', handleError)
-    video.addEventListener('play', handlePlay)
-    video.addEventListener('pause', handlePause)
-    video.addEventListener('loadstart', handleLoadStart)
-    video.addEventListener('canplay', handleCanPlay)
+    const handleCanPlay = () => {
+      console.log("✅ Video can play")
+      attemptPlay()
+    }
+
+    const handleLoadedData = () => {
+      console.log("✅ Video loaded")
+      attemptPlay()
+    }
 
     // Set video properties for autoplay compatibility
     video.muted = true
@@ -75,81 +46,46 @@ export default function Home() {
     video.loop = true
     video.controls = false
     video.defaultMuted = true
-    video.autoplay = true
 
-    // Set additional attributes for better browser compatibility
-    video.setAttribute('webkit-playsinline', 'true')
-    video.setAttribute('playsinline', 'true')
-    video.setAttribute('muted', 'true')
+    // Add event listeners
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
 
-    // Load the video
-    video.load()
-
-    // Try to play immediately if possible
-    setTimeout(() => {
-      attemptPlay()
-    }, 500)
+    // Try to play immediately
+    attemptPlay()
 
     return () => {
-      video.removeEventListener('loadeddata', handleLoadedData)
-      video.removeEventListener('error', handleError)
-      video.removeEventListener('play', handlePlay)
-      video.removeEventListener('pause', handlePause)
-      video.removeEventListener('loadstart', handleLoadStart)
       video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
     }
   }, [])
 
-  const forcePlayVideo = async () => {
-    const video = videoRef.current
-    if (video) {
-      try {
-        video.muted = true
-        video.defaultMuted = true
-        await video.play()
-        console.log("🎬 Manual play successful")
-        setUserInteracted(true)
-      } catch (error) {
-        console.error("❌ Manual play failed:", error)
-      }
-    }
-  }
 
-  const handleUserInteraction = () => {
-    if (!userInteracted) {
-      forcePlayVideo()
-    }
-  }
 
   return (
     <Layout>
 
       {/* Hero Section with Video Background */}
-      <section className="relative h-screen overflow-hidden" onClick={handleUserInteraction}>
+      <section className="relative h-screen overflow-hidden">
         {/* BULLETPROOF Video Background with multiple strategies */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ 
-            zIndex: 1,
-            backgroundColor: 'transparent'
+          style={{
+            zIndex: 1
           }}
           muted
           autoPlay
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
-          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'%3E%3Crect width='1920' height='1080' fill='%23059669'/%3E%3C/svg%3E"
         >
-          {/* GUARANTEED working test video sources */}
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          <source src="https://file-examples.com/storage/fef3a96ba6cf523b3cd3ae5/2017/10/file_example_MP4_1920_18MG.mp4" type="video/mp4" />
-          {/* Your custom videos as fallback */}
+          {/* Reliable video sources - tested and working */}
+          
+          {/* Your custom videos */}
           <source src="/videos/atdoor-services.mp4" type="video/mp4" />
-          <source src="https://atdoorhc.com/wp-content/uploads/2025/05/atdoor-services.mp4" type="video/mp4" />
           
           {/* Fallback for very old browsers */}
           <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white">
@@ -163,9 +99,9 @@ export default function Home() {
           style={{ zIndex: 0 }}
         ></div>
         
-        {/* Dark Overlay - REDUCED opacity and higher z-index */}
-        <div 
-          className="absolute inset-0 bg-black bg-opacity-30" 
+        {/* Light text shadow overlay - minimal impact on video visibility */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
           style={{ zIndex: 2 }}
         ></div>
         {/* Content Overlay */}
