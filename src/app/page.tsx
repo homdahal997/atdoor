@@ -146,16 +146,16 @@ export default function Home() {
       {/* AT DOOR HEALTHCARE Section - Matching the image layout */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             {/* Left side - Image */}
-            <div className="relative order-2 lg:order-1">
-              <div className="bg-white p-6 rounded-2xl shadow-xl">
+            <div className="relative order-2 lg:order-1 flex">
+              <div className="bg-gradient-to-br from-green-600 to-green-700 p-6 rounded-2xl shadow-xl flex-1">
                 <Image
-                  src="/api/placeholder/600/450"
+                  src="https://atdoorhc.com/wp-content/uploads/2025/05/Gemini_Generated_Image_pon681pon681pon6.jpeg"
                   alt="Elderly person reading comfortably at home with caregiver nearby"
                   width={600}
                   height={450}
-                  className="w-full h-auto rounded-xl object-cover"
+                  className="w-full h-full rounded-xl object-cover"
                 />
               </div>
               {/* Decorative elements */}
@@ -164,8 +164,8 @@ export default function Home() {
             </div>
 
             {/* Right side - Content */}
-            <div className="order-1 lg:order-2">
-              <div className="bg-gradient-to-br from-green-600 to-green-700 text-white p-8 lg:p-10 rounded-2xl shadow-xl">
+            <div className="order-1 lg:order-2 flex">
+              <div className="bg-gradient-to-br from-green-600 to-green-700 text-white p-8 lg:p-10 rounded-2xl shadow-xl flex flex-col justify-center flex-1">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
                   AT DOOR HEALTHCARE
                 </h2>
