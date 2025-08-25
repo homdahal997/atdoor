@@ -111,32 +111,68 @@ export default function Home() {
           className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
           style={{ zIndex: 2 }}
         ></div>
-        {/* Content Overlay - Positioned at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 pb-16 md:pb-20" style={{ zIndex: 3 }}>
-          <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight drop-shadow-2xl">
-              WELCOME TO AT DOOR HEALTHCARE
+        {/* Enhanced Content Overlay - Positioned at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 section-padding bg-gradient-to-t from-black/70 via-black/40 to-transparent" style={{ zIndex: 3 }}>
+          <div className="container mx-auto container-padding text-center text-white max-w-6xl">
+            <h1 className="heading-hero text-white mb-8 animate-fade-in">
+              Compassionate Care at Your Doorstep
             </h1>
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl lg:text-3xl mb-12 text-gray-100 max-w-4xl mx-auto leading-relaxed font-light animate-slide-up">
+              Professional, personalized home health services designed to support your independence and well-being in the comfort of your own home.
+            </p>
+            {/* Enhanced Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto animate-scale-in">
               <Button
                 size="lg"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="btn-primary text-lg px-10 py-4 rounded-full shadow-2xl hover:shadow-3xl"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span>DOWNLOAD BROCHURE</span>
+                <span className="flex items-center space-x-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Schedule Free Assessment</span>
+                </span>
               </Button>
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-10 py-4 rounded-full font-semibold transition-all duration-500 text-lg backdrop-blur-sm"
               >
-                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-6-4h6" />
-                </svg>
-                <span>SCHEDULE ASSESSMENT</span>
+                <span className="flex items-center space-x-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>Download Brochure</span>
+                </span>
               </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 opacity-90">
+              <div className="trust-indicator justify-center text-white">
+                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">Licensed & Insured</span>
+              </div>
+              <div className="trust-indicator justify-center text-white">
+                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span className="font-medium">5-Star Rated</span>
+              </div>
+              <div className="trust-indicator justify-center text-white">
+                <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-medium">24/7 Support</span>
+              </div>
+              <div className="trust-indicator justify-center text-white">
+                <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="font-medium">Richmond Area</span>
+              </div>
             </div>
           </div>
         </div>
@@ -150,8 +186,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AT DOOR HEALTHCARE Section - Matching the image layout */}
-      <section className="py-16 bg-gray-50">
+      {/* AT DOOR HEALTHCARE Section - Enhanced */}
+      <section className="section-padding bg-gradient-secondary">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             {/* Left side - Image */}
@@ -203,68 +239,74 @@ export default function Home() {
       </section>
 
       {/* Our CARE Principles Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our CARE Principles</h2>
+      <section className="section-padding bg-white">
+        <div className="container mx-auto container-padding">
+          <div className="text-center mb-16">
+            <div className="healthcare-badge mx-auto mb-6">
+              ✨ Our Core Values
+            </div>
+            <h2 className="heading-section mb-6">Our CARE Principles</h2>
+            <p className="text-body text-lg max-w-3xl mx-auto">
+              Every aspect of our service is built around these four fundamental principles that guide our approach to home healthcare.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Compassionate */}
-            <Card className="text-center p-6 bg-gradient-to-br from-yellow-200 to-yellow-300 border-0">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">💝</span>
+            <Card className="card-elevated text-center p-8 bg-gradient-to-br from-yellow-50 to-yellow-100 group">
+              <CardHeader className="pb-6">
+                <div className="service-icon bg-gradient-to-br from-yellow-500 to-orange-500 mx-auto mb-6">
+                  <span className="text-2xl">💝</span>
                 </div>
-                <CardTitle className="text-gray-800 text-lg font-bold">Compassionate</CardTitle>
+                <CardTitle className="heading-card text-gray-800">Compassionate</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Providing care with kindness, empathy, understanding, and understanding the person as a whole, not just their medical needs.
+                <p className="text-body leading-relaxed">
+                  Providing care with kindness, empathy, understanding, and seeing the person as a whole, not just their medical needs.
                 </p>
               </CardContent>
             </Card>
 
             {/* Assistance */}
-            <Card className="text-center p-6 bg-gradient-to-br from-blue-200 to-blue-300 border-0">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🤝</span>
+            <Card className="card-elevated text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 group">
+              <CardHeader className="pb-6">
+                <div className="service-icon bg-gradient-to-br from-blue-500 to-blue-600 mx-auto mb-6">
+                  <span className="text-2xl">🤝</span>
                 </div>
-                <CardTitle className="text-gray-800 text-lg font-bold">Assistance</CardTitle>
+                <CardTitle className="heading-card text-gray-800">Assistance</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-body leading-relaxed">
                   Offering support to our clients by assessing their needs and providing appropriate assistance to enhance their quality of life.
                 </p>
               </CardContent>
             </Card>
 
             {/* Respect */}
-            <Card className="text-center p-6 bg-gradient-to-br from-purple-200 to-purple-300 border-0">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🙏</span>
+            <Card className="card-elevated text-center p-8 bg-gradient-to-br from-purple-50 to-purple-100 group">
+              <CardHeader className="pb-6">
+                <div className="service-icon bg-gradient-to-br from-purple-500 to-purple-600 mx-auto mb-6">
+                  <span className="text-2xl">🙏</span>
                 </div>
-                <CardTitle className="text-gray-800 text-lg font-bold">Respect</CardTitle>
+                <CardTitle className="heading-card text-gray-800">Respect</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  As human beings and valuing their dignity, preferences, and choices while maintaining their autonomy and not allowing them to have a say in their treatment and care.
+                <p className="text-body leading-relaxed">
+                  Valuing human dignity, preferences, and choices while maintaining autonomy and ensuring clients have a voice in their treatment and care.
                 </p>
               </CardContent>
             </Card>
 
             {/* Empowerment */}
-            <Card className="text-center p-6 bg-gradient-to-br from-orange-200 to-orange-300 border-0">
-              <CardHeader className="pb-4">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">💪</span>
+            <Card className="card-elevated text-center p-8 bg-gradient-to-br from-orange-50 to-orange-100 group">
+              <CardHeader className="pb-6">
+                <div className="service-icon bg-gradient-to-br from-orange-500 to-orange-600 mx-auto mb-6">
+                  <span className="text-2xl">💪</span>
                 </div>
-                <CardTitle className="text-gray-800 text-lg font-bold">Empowerment</CardTitle>
+                <CardTitle className="heading-card text-gray-800">Empowerment</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-body leading-relaxed">
                   Enabling our clients to feel confident in their own health and wellness by providing them with the tools and support they need to live their best life.
                 </p>
               </CardContent>

@@ -42,23 +42,29 @@ export default function AboutPage() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-600 to-green-700 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Us</h1>
-          <p className="text-xl md:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed">
+      {/* Enhanced Hero Section */}
+      <section className="bg-gradient-primary text-white section-padding">
+        <div className="container mx-auto container-padding text-center">
+          <div className="healthcare-badge bg-white/20 text-white border-white/30 mx-auto mb-8">
+            ✨ About At Door HealthCare
+          </div>
+          <h1 className="heading-hero text-white mb-8">About Us</h1>
+          <p className="text-xl md:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed font-light">
             As a Home Health provider, our approach goes beyond traditional Home Health. We focus on building genuine, lasting relationships with our clients and their families, treating individuals as valued members of our extended family.
           </p>
         </div>
       </section>
 
-      {/* Who We Are Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Who We Are</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+      {/* Enhanced Who We Are Section */}
+      <section className="section-padding bg-white">
+        <div className="container mx-auto container-padding">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="animate-fade-in">
+              <div className="healthcare-badge mb-6">
+                🏥 Professional Healthcare Team
+              </div>
+              <h2 className="heading-section mb-8">Who We Are</h2>
+              <div className="space-y-6 text-body text-lg leading-relaxed">
                 <p>
                   We proudly deliver personalized, non-medical Home Health services designed to support individuals with disabilities, mobility limitations, injuries, or chronic health conditions. Our team consists of highly trained professionals who excel in providing exceptional care while fostering independence and comfort in the familiar surroundings of home.
                 </p>
@@ -66,19 +72,37 @@ export default function AboutPage() {
                   By crafting individualized care solutions, we address the specific needs of each client, ensuring a seamless blend of support and empowerment. Our services are rooted in the principles of CARE: Compassionate Assistance, Respect, and Empowerment, with the goal of enhancing overall well-being and quality of life.
                 </p>
               </div>
+
+              {/* Trust Indicators */}
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="trust-indicator">
+                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="font-medium">Licensed & Certified</span>
+                </div>
+                <div className="trust-indicator">
+                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-medium">Fully Insured</span>
+                </div>
+              </div>
             </div>
-            <div className="relative">
-              <div className="bg-green-50 p-6 rounded-2xl shadow-xl">
-                <Image 
-                  src="https://atdoorhc.com/wp-content/uploads/2025/05/Gemini_Generated_Image_pon681pon681pon6.jpeg" 
-                  alt="Healthcare professional with elderly client" 
+            <div className="relative animate-slide-up">
+              <div className="card-elevated bg-gradient-to-br from-green-50 to-emerald-50 p-8 transform hover:scale-105 transition-all duration-500">
+                <Image
+                  src="https://atdoorhc.com/wp-content/uploads/2025/05/Gemini_Generated_Image_pon681pon681pon6.jpeg"
+                  alt="Healthcare professional with elderly client"
                   width={400}
                   height={200}
-                  className="w-full h-auto rounded-xl object-cover"
+                  className="w-full h-auto rounded-2xl object-cover shadow-lg"
                 />
               </div>
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-green-200 rounded-full opacity-50"></div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-200 rounded-full opacity-50"></div>
+              {/* Enhanced Decorative elements */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-green-200 to-green-300 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-gradient-to-br from-orange-200 to-orange-300 rounded-full opacity-60 animate-pulse"></div>
+              <div className="absolute top-1/2 -right-3 w-6 h-6 bg-yellow-400 rounded-full opacity-80"></div>
             </div>
           </div>
         </div>
