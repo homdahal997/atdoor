@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Layout from "@/components/layout/Layout"
+import FreeMap from "@/components/ui/free-map"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -206,25 +207,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
+      {/* Enhanced Map Section with Google Maps Integration */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Visit Our Office</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We&apos;re conveniently located in Richmond, VA. Feel free to visit us during our office hours or schedule an appointment.
+              We&apos;re conveniently located in Richmond, VA. Get directions, calculate travel time, and explore our neighborhood with our interactive map.
             </p>
           </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="aspect-video bg-gray-200 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl mb-4">🗺️</div>
-                <p className="text-gray-600 font-medium">Interactive Map</p>
-                <p className="text-sm text-gray-500">8501 Mayland Dr, Suite 103A<br />Richmond VA 23294</p>
-              </div>
-            </div>
-          </div>
+
+          <FreeMap
+            businessAddress="8501 Mayland Dr, Suite 103A, Richmond VA 23294"
+            businessName="At Door HealthCare"
+            businessPhone="(804) 302-4673"
+          />
         </div>
       </section>
 
