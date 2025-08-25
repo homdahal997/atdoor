@@ -111,20 +111,20 @@ export default function Home() {
           className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
           style={{ zIndex: 2 }}
         ></div>
-        {/* Enhanced Content Overlay - Positioned at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 section-padding bg-gradient-to-t from-black/70 via-black/40 to-transparent" style={{ zIndex: 3 }}>
-          <div className="container mx-auto container-padding text-center text-white max-w-6xl">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 animate-fade-in leading-tight">
+        {/* Enhanced Content Overlay - Optimized for mobile video visibility */}
+        <div className="absolute bottom-0 left-0 right-0 py-8 md:py-16 lg:py-20 bg-gradient-to-t from-black/60 md:from-black/70 via-black/30 md:via-black/40 to-transparent" style={{ zIndex: 3 }}>
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center text-white max-w-6xl">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8 animate-fade-in leading-tight">
               Compassionate Care at Your Doorstep
             </h1>
-            {/* Enhanced Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto animate-scale-in">
+            {/* Enhanced Action Buttons - Optimized for mobile */}
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center max-w-3xl mx-auto animate-scale-in">
               <Button
                 size="lg"
-                className="btn-primary text-lg px-10 py-4 rounded-full shadow-2xl hover:shadow-3xl"
+                className="btn-primary text-base md:text-lg px-6 md:px-10 py-3 md:py-4 rounded-full shadow-2xl hover:shadow-3xl w-full sm:w-auto"
               >
-                <span className="flex items-center space-x-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="flex items-center justify-center space-x-2 md:space-x-3">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>Schedule Free Assessment</span>
@@ -132,10 +132,10 @@ export default function Home() {
               </Button>
               <Button
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-10 py-4 rounded-full font-semibold transition-all duration-500 text-lg backdrop-blur-sm"
+                className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 md:px-10 py-3 md:py-4 rounded-full font-semibold transition-all duration-500 text-base md:text-lg backdrop-blur-sm w-full sm:w-auto"
               >
-                <span className="flex items-center space-x-3">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="flex items-center justify-center space-x-2 md:space-x-3">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   <span>Download Brochure</span>
@@ -143,8 +143,8 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Trust Indicators - Hidden on mobile to show video better */}
+            <div className="mt-16 hidden md:grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20 hover:bg-white/15 transition-all duration-300 group">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -185,8 +185,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Scroll Down Indicator - Positioned above content */}
-        <div className="absolute bottom-32 md:bottom-40 left-1/2 transform -translate-x-1/2" style={{ zIndex: 4 }}>
+        {/* Scroll Down Indicator - Hidden on mobile to show video better */}
+        <div className="absolute bottom-32 md:bottom-40 left-1/2 transform -translate-x-1/2 hidden md:block" style={{ zIndex: 4 }}>
           <div className="animate-bounce">
             <svg className="w-5 h-5 md:w-6 md:h-6 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
