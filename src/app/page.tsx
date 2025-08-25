@@ -1,6 +1,6 @@
 
 "use client"
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Layout from "@/components/layout/Layout"
@@ -9,8 +9,15 @@ import Image from "next/image"
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isClient) return // Prevent hydration issues
+    
     const video = videoRef.current
     if (!video) return
 
@@ -58,7 +65,7 @@ export default function Home() {
       video.removeEventListener('canplay', handleCanPlay)
       video.removeEventListener('loadeddata', handleLoadedData)
     }
-  }, [])
+  }, [isClient])
 
 
 

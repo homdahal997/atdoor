@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
@@ -10,10 +10,16 @@ import ContactPopup from "@/components/ui/contact-popup"
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false)
+  const [isClient, setIsClient] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Function to determine if a link is active
   const isActiveLink = (href: string) => {
+    if (!isClient) return false // Prevent hydration mismatch
     if (href === '/') {
       return pathname === '/'
     }
