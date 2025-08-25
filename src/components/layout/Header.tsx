@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,23 +10,60 @@ import ContactPopup from "@/components/ui/contact-popup"
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Function to determine if a link is active
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    return pathname.startsWith(href)
+  }
+
+  // Function to get link classes based on active state
+  const getLinkClasses = (href: string) => {
+    const baseClasses = "px-6 py-3 font-medium transition-all duration-300"
+    if (isActiveLink(href)) {
+      return `${baseClasses} bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold hover:from-orange-600 hover:to-orange-700 shadow-lg`
+    }
+    return `${baseClasses} text-white hover:bg-green-700 transition-colors`
+  }
   return (
-    <header className="bg-white">
+    <header className="sticky top-0 z-50 bg-white shadow-md">
       {/* Top banner with contact info */}
       <div className="bg-gradient-to-r from-yellow-400 to-green-500 text-white py-2">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
+          {/* Mobile Layout: Inline 24/7 SERVICE + Phone */}
+          <div className="sm:hidden flex items-center space-x-2">
+            <span>24/7 SERVICE</span>
+            <a href="tel:+18043024673" className="flex items-center hover:text-yellow-200 transition-colors">
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              (804) 302-4673
+            </a>
+          </div>
+
+          {/* Desktop Layout: Original with all contact info */}
+          <div className="hidden sm:flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
             <span className="flex items-center">
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
               24/7 SERVICE
             </span>
-            <span className="flex items-center">
+            <a href="tel:+18043024673" className="flex items-center hover:text-yellow-200 transition-colors">
               <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
               </svg>
-              (555) 302-8572
+              (804) 302-4673
+            </a>
+            <span className="flex items-center text-xs">
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Fax: (804) 348-2782
             </span>
           </div>
           <div className="mt-1 sm:mt-0">
@@ -41,7 +79,7 @@ export default function Header() {
             alt="AT Door Healthcare"
             width={360}
             height={120}
-            className="object-contain"
+            className="object-contain md:w-auto w-48 h-auto"
           />
         </div>
 
@@ -99,14 +137,14 @@ export default function Header() {
           </Button>
         </div>
 
-        {/* Mobile: Menu button */}
+        {/* Mobile: Enhanced Menu button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-2 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+            className="p-3 bg-gradient-to-r from-green-600 to-green-500 text-white hover:from-green-700 hover:to-green-600 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
@@ -118,35 +156,35 @@ export default function Header() {
           <div className="flex">
             <Link
               href="/"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg"
+              className={getLinkClasses("/")}
             >
               Home
             </Link>
             <span className="text-white self-center px-2">|</span>
             <Link
               href="/about"
-              className="text-white px-6 py-3 font-medium hover:bg-green-700 transition-colors"
+              className={getLinkClasses("/about")}
             >
               About Us
             </Link>
             <span className="text-white self-center px-2">|</span>
             <Link
               href="/services"
-              className="text-white px-6 py-3 font-medium hover:bg-green-700 transition-colors"
+              className={getLinkClasses("/services")}
             >
               Services
             </Link>
             <span className="text-white self-center px-2">|</span>
             <Link
               href="/contact"
-              className="text-white px-6 py-3 font-medium hover:bg-green-700 transition-colors"
+              className={getLinkClasses("/contact")}
             >
               Contact us
             </Link>
             <span className="text-white self-center px-2">|</span>
             <Link
               href="/careers"
-              className="text-white px-6 py-3 font-medium hover:bg-green-700 transition-colors"
+              className={getLinkClasses("/careers")}
             >
               Careers
             </Link>

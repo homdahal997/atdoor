@@ -104,28 +104,28 @@ export default function Home() {
           className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
           style={{ zIndex: 2 }}
         ></div>
-        {/* Content Overlay */}
-        <div className="relative h-full flex items-center justify-center" style={{ zIndex: 3 }}>
+        {/* Content Overlay - Positioned at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 pb-16 md:pb-20" style={{ zIndex: 3 }}>
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight drop-shadow-lg">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight drop-shadow-2xl">
               WELCOME TO ATDOOR HEALTH CARE
             </h1>
-            {/* Action Buttons - Matching the image style */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-2xl mx-auto">
               <Button
                 size="lg"
-                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-green-500 hover:bg-green-600 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
                 <span>DOWNLOAD BROCHURE</span>
               </Button>
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="bg-green-600 hover:bg-green-700 text-white px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-6-4h6" />
                 </svg>
                 <span>SCHEDULE ASSESSMENT</span>
@@ -133,10 +133,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2" style={{ zIndex: 2 }}>
+        {/* Scroll Down Indicator - Positioned above content */}
+        <div className="absolute bottom-32 md:bottom-40 left-1/2 transform -translate-x-1/2" style={{ zIndex: 4 }}>
           <div className="animate-bounce">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 md:w-6 md:h-6 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>

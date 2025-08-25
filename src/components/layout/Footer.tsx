@@ -10,10 +10,15 @@ export default function Footer() {
             <p className="text-green-100 text-sm leading-relaxed">
               Compassionate home healthcare services providing dignity, independence, and quality care in the comfort of your home.
             </p>
-            <div className="mt-4">
-              <p className="text-green-100 text-sm">📞 (555) 302-8572</p>
-              <p className="text-green-100 text-sm">📧 info@atdoorhealthcare.com</p>
-              <p className="text-green-100 text-sm">📍 Your City, State 12345</p>
+            <div className="mt-4 space-y-1">
+              <p className="text-green-100 text-sm">
+                📞 <a href="tel:+18043024673" className="hover:text-white transition-colors">(804) 302-4673</a>
+              </p>
+              <p className="text-green-100 text-sm">📠 Fax: (804) 348-2782</p>
+              <p className="text-green-100 text-sm">
+                📧 <a href="mailto:info@atdoorhc.com" className="hover:text-white transition-colors">info@atdoorhc.com</a>
+              </p>
+              <p className="text-green-100 text-sm">📍 8501 Mayland Dr, Suite 103A<br />Richmond VA 23294</p>
             </div>
           </div>
 
