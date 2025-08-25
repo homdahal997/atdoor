@@ -171,22 +171,28 @@ export default function Home() {
         {/* Content Overlay */}
         <div className="relative h-full flex items-center justify-center" style={{ zIndex: 3 }}>
           <div className="container mx-auto px-4 text-center text-white">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight drop-shadow-lg">
               WELCOME TO ATDOOR HEALTH CARE
             </h1>
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+            {/* Action Buttons - Matching the image style */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 text-base font-semibold rounded-md flex-1"
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                SCHEDULE ASSESSMENT
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>DOWNLOAD BROCHURE</span>
               </Button>
               <Button
                 size="lg"
-                className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 text-base font-semibold rounded-md flex-1"
+                className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-bold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
               >
-                DOWNLOAD BROCHURE
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-6-4h6" />
+                </svg>
+                <span>SCHEDULE ASSESSMENT</span>
               </Button>
             </div>
           </div>
@@ -201,43 +207,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AT DOOR HEALTHCARE Section */}
+      {/* AT DOOR HEALTHCARE Section - Matching the image layout */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Left side - Content */}
-            <div className="bg-green-600 text-white p-8 rounded-lg">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">AT DOOR HEALTHCARE</h2>
-              <p className="text-base md:text-lg leading-relaxed mb-4">
-                We believe that everyone, regardless of their age, health condition,
-                financial challenges, or circumstance, deserves access to compassionate
-                and top-quality care. Life challenges should not be a barrier to achieving
-                optimal health and well-being.
-              </p>
-              <p className="text-base md:text-lg leading-relaxed mb-6">
-                Our mission is to provide personalized, dignified care that enables
-                individuals to maintain their independence and quality of life in the
-                comfort of their own homes.
-              </p>
-              <Button
-                variant="secondary"
-                size="lg"
-                className="bg-white text-green-600 hover:bg-gray-100 font-semibold"
-              >
-                Learn More
-              </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Image */}
+            <div className="relative order-2 lg:order-1">
+              <div className="bg-white p-6 rounded-2xl shadow-xl">
+                <Image
+                  src="/api/placeholder/600/450"
+                  alt="Elderly person reading comfortably at home with caregiver nearby"
+                  width={600}
+                  height={450}
+                  className="w-full h-auto rounded-xl object-cover"
+                />
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-green-200 rounded-full opacity-50"></div>
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-200 rounded-full opacity-50"></div>
             </div>
 
-            {/* Right side - Image */}
-            <div className="relative">
-              <div className="bg-white p-4 rounded-lg shadow-lg">
-                <Image
-                  src="/api/placeholder/500/400"
-                  alt="Caregiver with elderly client"
-                  width={500}
-                  height={400}
-                  className="w-full h-auto rounded-lg object-cover"
-                />
+            {/* Right side - Content */}
+            <div className="order-1 lg:order-2">
+              <div className="bg-gradient-to-br from-green-600 to-green-700 text-white p-8 lg:p-10 rounded-2xl shadow-xl">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+                  AT DOOR HEALTHCARE
+                </h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6 text-green-50">
+                  Age, quality care, life challenges should not be a barrier to achieving
+                  wellness, dignity, and comfort. That is why AT DOOR HEALTH is here to
+                  provide you and your loved ones with Home Health services uniquely
+                  tailored to meet your specific needs, ensuring that you feel valued,
+                  supported and empowered at every step of the way.
+                </p>
+                <p className="text-base md:text-lg leading-relaxed mb-8 text-green-50">
+                  What sets us apart is our resolute commitments to excellence, innovation and genuine human
+                  connection. Our resolute and professional trained staff are enthusiastic
+                  advocates for your well-being, ensuring every interaction foster trust,
+                  respect, and positive change.
+                </p>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="bg-white text-green-600 hover:bg-green-50 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  Learn More
+                </Button>
               </div>
             </div>
           </div>

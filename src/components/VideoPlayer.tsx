@@ -2,8 +2,30 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
+// Define ReactPlayer props interface
+interface ReactPlayerProps {
+  url: string
+  playing?: boolean
+  muted?: boolean
+  loop?: boolean
+  controls?: boolean
+  width?: string | number
+  height?: string | number
+  style?: React.CSSProperties
+  onReady?: () => void
+  onStart?: () => void
+  onPlay?: () => void
+  onPause?: () => void
+  onError?: (error: unknown) => void
+  onBuffer?: () => void
+  onBufferEnd?: () => void
+}
+
 // Dynamically import ReactPlayer to avoid SSR issues
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false })
+const ReactPlayer = dynamic(() => import('react-player'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-gray-900" />
+}) as React.ComponentType<ReactPlayerProps>
 
 interface VideoPlayerProps {
   onReady?: () => void
@@ -60,7 +82,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           console.log('⏸️ ReactPlayer paused')
           onPause?.()
         }}
-        onError={(error) => {
+        onError={(error: unknown) => {
           console.error('❌ ReactPlayer error:', error)
           onError?.(new Error('Video playback failed'))
         }}
