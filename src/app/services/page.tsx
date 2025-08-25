@@ -243,20 +243,52 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
             {[
-              "Comprehensive Care Needs Assessment",
-              "Physical vs. Emotional Support Requirements",
-              "Transportation and Mobility Assistance",
-              "Cognitive Impairment and Specialized Care",
-              "Language Proficiency",
-              "Care Hours and Flexibility",
-              "Medical and Skilled Care Needs",
-              "Nutritional Requirements and Meal Planning",
-              "Medication Management and Monitoring"
+              {
+                title: "Comprehensive Care Needs Assessment",
+                description: "Evaluate your loved one's daily routine. Compile a detailed list of tasks they can no longer perform independently and identify when and where they require support, from morning routines to evening activities."
+              },
+              {
+                title: "Physical vs. Emotional Support Requirements",
+                description: "Determine the balance between physical assistance (e.g., mobility assistance, hygiene care) and emotional support (e.g., companionship, mental stimulation). Knowing the distinction will help identify whether caregiving should lean more toward hands-on physical care or offer supportive companionship."
+              },
+              {
+                title: "Transportation and Mobility Assistance",
+                description: "Assess whether your loved one requires help with transportation for medical appointments, errands, or social engagement. Clarify whether the caregiver will be required to drive, and ensure that proper insurance coverage is in place."
+              },
+              {
+                title: "Cognitive Impairment and Specialized Care",
+                description: "If your loved one has been diagnosed with cognitive impairments such as Alzheimer's or Parkinson's disease, a comprehensive understanding of the specific condition is essential. This will guide the agency in assigning caregivers with the specialized training and experience needed to provide the highest level of care."
+              },
+              {
+                title: "Language Proficiency",
+                description: "Does your loved one require a caregiver who speaks a particular language? If so, ensure the agency can accommodate this request to facilitate smoother interactions and enhance comfort."
+              },
+              {
+                title: "Care Hours and Flexibility",
+                description: "Determine the number of care hours required daily and review the types of services that will be needed during each visit. This will help establish a baseline for scheduling and ensure that the caregiver can meet the demands of the role."
+              },
+              {
+                title: "Medical and Skilled Care Needs",
+                description: "If your loved one requires specialized medical care—such as medication management, wound care, or vital sign monitoring—ensure that the caregiver has the necessary expertise. These needs should be clearly outlined in advance to ensure the correct caregiver is assigned."
+              },
+              {
+                title: "Nutritional Requirements and Meal Planning",
+                description: "If your loved one has special dietary needs, such as allergies or specific meal preferences, it's critical to communicate these requirements. Additionally, consider whether the caregiver will assist with grocery shopping or meal preparation."
+              },
+              {
+                title: "Medication Management and Monitoring",
+                description: "Review the medications your loved one takes and confirm they are being taken correctly and on time. Provide the agency with a detailed list of medications and any specific requirements, such as whether certain medications need to be taken with food."
+              },
+              {
+                title: "Comprehensive Care Coordination",
+                description: "If your loved one requires oversight beyond basic caregiving, such as coordinating appointments, obtaining medical supplies, or managing prescriptions, it may be beneficial to enlist the services of a professional Care Manager. This individual can supervise the overall care plan and ensure it aligns with your family's goals and medical needs."
+              }
             ].map((item, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md border-l-4 border-green-500">
-                <h4 className="font-semibold text-green-600 text-sm">{item}</h4>
+              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 group">
+                <h4 className="font-bold text-green-600 text-lg mb-3 group-hover:text-green-700 transition-colors duration-300">{item.title}</h4>
+                <p className="text-gray-700 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
