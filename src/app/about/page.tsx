@@ -70,10 +70,10 @@ export default function AboutPage() {
             <div className="relative">
               <div className="bg-green-50 p-6 rounded-2xl shadow-xl">
                 <Image 
-                  src="/api/placeholder/600/400" 
+                  src="https://atdoorhc.com/wp-content/uploads/2025/05/Gemini_Generated_Image_pon681pon681pon6.jpeg" 
                   alt="Healthcare professional with elderly client" 
-                  width={600}
-                  height={400}
+                  width={400}
+                  height={200}
                   className="w-full h-auto rounded-xl object-cover"
                 />
               </div>

@@ -77,8 +77,8 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="AT Door Healthcare"
-            width={360}
-            height={120}
+            width={300}
+            height={100}
             className="object-contain md:w-auto w-48 h-auto"
           />
         </div>

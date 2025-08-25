@@ -108,7 +108,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 pb-16 md:pb-20" style={{ zIndex: 3 }}>
           <div className="container mx-auto px-4 text-center text-white">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight drop-shadow-2xl">
-              WELCOME TO ATDOOR HEALTH CARE
+              WELCOME TO AT DOOR HEALTHCARE
             </h1>
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center max-w-2xl mx-auto">
