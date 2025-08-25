@@ -3,45 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Layout from "@/components/layout/Layout"
 
 export default function ServicesPage() {
-  const coreServices = [
-    {
-      title: "Personal Care",
-      description: "Comprehensive assistance with daily living activities including bathing, grooming, dressing, and personal hygiene to maintain dignity and comfort.",
-      icon: "👤",
-      features: ["Bathing & Grooming", "Dressing Assistance", "Personal Hygiene", "Mobility Support"],
-      gradient: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconBg: "bg-blue-500"
-    },
-    {
-      title: "Respite Care",
-      description: "Temporary relief for family caregivers, providing professional care while you take time for yourself or handle other responsibilities.",
-      icon: "🤝",
-      features: ["Short-term Care", "Family Relief", "Flexible Scheduling", "Peace of Mind"],
-      gradient: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      iconBg: "bg-purple-500"
-    },
-    {
-      title: "Companion Care",
-      description: "Social interaction and emotional support to combat loneliness and maintain mental well-being through meaningful companionship.",
-      icon: "❤️",
-      features: ["Social Interaction", "Emotional Support", "Activity Engagement", "Mental Stimulation"],
-      gradient: "from-rose-500 to-rose-600",
-      bgColor: "bg-rose-50",
-      iconBg: "bg-rose-500"
-    },
-    {
-      title: "Light Housekeeping",
-      description: "Assistance with household tasks to maintain a clean, safe, and comfortable living environment.",
-      icon: "🏠",
-      features: ["Cleaning Services", "Laundry Assistance", "Meal Preparation", "Organization"],
-      gradient: "from-emerald-500 to-emerald-600",
-      bgColor: "bg-emerald-50",
-      iconBg: "bg-emerald-500"
-    }
-  ]
-
   const qualityFactors = [
     {
       title: "Transparency and Responsiveness",
@@ -124,47 +85,6 @@ export default function ServicesPage() {
                 View All Services
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Services Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Our Core Services</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {coreServices.map((service, index) => (
-              <Card key={index} className={`text-center hover:shadow-2xl hover:scale-105 transition-all duration-500 border-0 shadow-xl ${service.bgColor} overflow-hidden group`}>
-                <CardHeader className="pb-4 relative">
-                  <div className={`w-16 h-16 ${service.iconBg} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <span className="text-2xl text-white">{service.icon}</span>
-                  </div>
-                  <CardTitle className={`text-xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                    {service.title}
-                  </CardTitle>
-                  {/* Decorative background element */}
-                  <div className={`absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-                </CardHeader>
-                <CardContent className="relative">
-                  <p className="text-gray-700 text-sm leading-relaxed mb-6 font-medium">{service.description}</p>
-                  <div className="space-y-3">
-                    <h4 className={`font-semibold text-sm bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                      Key Features:
-                    </h4>
-                    <ul className="text-xs text-gray-600 space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${idx * 50}ms` }}>
-                          <div className={`w-3 h-3 bg-gradient-to-r ${service.gradient} rounded-full mr-3 flex-shrink-0 shadow-sm`}></div>
-                          <span className="font-medium">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {/* Bottom accent */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
@@ -307,24 +227,140 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
             {[
-              "Licensing and Accreditation",
-              "Employee Status",
-              "Insurance Coverage",
-              "Supervision and Oversight",
-              "Thorough Background Checks",
-              "Specialized Training Programs",
-              "24/7 Availability",
-              "Client and Family Satisfaction"
+              {
+                title: "Licensing and Accreditation",
+                description: "Verify that the agency holds the appropriate business licenses and meets any state-specific regulations. Proper licensing ensures the agency operates within legal frameworks and maintains industry standards."
+              },
+              {
+                title: "Employee Status",
+                description: "Ensure that caregivers are classified as employees (not independent contractors). This guarantees that the agency adheres to tax and legal obligations, including paying employee taxes and providing benefits such as Social Security, Medicare, and unemployment insurance."
+              },
+              {
+                title: "Insurance Coverage",
+                description: "Confirm that the agency maintains comprehensive insurance, including worker's compensation, professional liability, and fidelity bonding insurance. These protections safeguard both the client and the caregiver."
+              },
+              {
+                title: "Supervision and Oversight",
+                description: "Ensure that each caregiver is supervised by a qualified manager, allowing for continuous oversight and evaluation of care standards. Regular supervision maintains quality and addresses any issues promptly."
+              },
+              {
+                title: "Thorough Background Checks",
+                description: "The agency should conduct comprehensive background screenings including criminal history, employment verification, and reference checks. This ensures the safety and security of clients in their homes."
+              },
+              {
+                title: "Specialized Training Programs",
+                description: "The agency should provide ongoing training in areas such as dementia care, mobility assistance, and other specialized caregiving techniques. Continuous education ensures caregivers stay current with best practices."
+              },
+              {
+                title: "24/7 Availability",
+                description: "A robust on-call system ensures that the agency is available to respond to emergencies or sudden changes in care needs. Round-the-clock availability provides peace of mind for families."
+              },
+              {
+                title: "Client and Family Satisfaction",
+                description: "Look for agencies with strong, positive customer reviews that reflect their ability to deliver dependable and compassionate care. Client testimonials and satisfaction ratings indicate service quality."
+              }
             ].map((item, index) => (
-              <div key={index} className="bg-green-50 p-4 rounded-lg text-center">
-                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-white font-bold">{index + 1}</span>
+              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <span className="text-white font-bold text-lg">{index + 1}</span>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-green-600 text-lg mb-3 group-hover:text-green-700 transition-colors duration-300">{item.title}</h4>
+                    <p className="text-gray-700 text-sm leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
-                <h4 className="font-semibold text-green-600 text-sm">{item}</h4>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Senior Driver Safety Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+              Senior Driver Safety: Safeguarding the Independence of Aging Adults
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              As seniors age, maintaining safe driving habits becomes increasingly difficult due to the natural decline in physical and cognitive abilities. If you suspect your loved one may no longer be fit to drive, consider these critical steps:
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Assessing Driving Abilities",
+                description: "Look for signs of unsafe driving, such as difficulty navigating intersections, slow reaction times, or reluctance to drive at night. Examine the condition of the vehicle and note any signs of minor accidents or near-misses."
+              },
+              {
+                title: "Gradual Transition",
+                description: "Begin by limiting driving to certain hours of the day, such as avoiding night driving, and provide alternative transportation options. This helps ease the transition and ensures continued independence while gradually reducing driving responsibilities."
+              },
+              {
+                title: "Explore Transportation Alternatives",
+                description: "Research local transportation services, such as senior ride programs or public transit, to provide viable alternatives. This can maintain mobility while ensuring safety."
+              },
+              {
+                title: "Consulting a Healthcare Professional",
+                description: "Work with healthcare providers to assess cognitive and physical abilities that may impact driving safety. Professional evaluation can provide objective guidance on driving capabilities and limitations."
+              },
+              {
+                title: "State Assistance and License Revocation",
+                description: "In some cases, it may be necessary to contact the Department of Motor Vehicles (DMV) to revoke a senior's driving license, particularly if their condition makes driving a hazard to themselves or others. Consult your local DMV for specific regulations and procedures."
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-green-600 text-lg mb-3 group-hover:text-green-700 transition-colors duration-300">{item.title}</h4>
+                    <p className="text-gray-700 text-sm leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Conclusion Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            {/* Driving Safety Conclusion */}
+            <div className="text-center mb-12">
+              <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                While this is a sensitive and often difficult decision, ensuring your loved one&apos;s safety and well-being, as well as the safety of others on the road, is paramount. Thoughtful, compassionate discussions and a proactive approach to alternative transportation can ease the transition and preserve independence.
+              </p>
+            </div>
+
+            {/* Main Conclusion */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 md:p-12 shadow-xl border border-green-100">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+                Conclusion
+              </h2>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed text-center max-w-4xl mx-auto">
+                Selecting the right Home Health provider is a critical decision that requires careful thought and consideration. By asking the right questions and evaluating an agency&apos;s operational standards, transparency, and care philosophy, you can make an informed choice that will provide your loved one with the highest quality care. 
+                <span className="font-semibold text-green-700 block mt-4">
+                  Let us help guide you through this process with professionalism, compassion, and a steadfast commitment to excellence.
+                </span>
+              </p>
+              
+              {/* Decorative elements */}
+              <div className="flex justify-center mt-8 space-x-4">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                <div className="w-3 h-3 bg-teal-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
