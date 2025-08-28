@@ -106,7 +106,7 @@ export default function AIChatbot() {
   return (
     <>
       {/* Chatbot Toggle Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-40">
         <Button
           onClick={() => setIsOpen(!isOpen)}
           className={`w-16 h-16 rounded-full shadow-2xl transition-all duration-300 ${
@@ -137,7 +137,7 @@ export default function AIChatbot() {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 flex flex-col animate-scale-in">
+        <div className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-200 z-40 flex flex-col animate-scale-in max-w-[calc(100vw-3rem)]">
           {/* Header */}
           <div className="bg-gradient-primary text-white p-4 rounded-t-2xl flex items-center space-x-3">
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
