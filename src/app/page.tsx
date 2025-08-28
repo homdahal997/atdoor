@@ -5,19 +5,30 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Layout from "@/components/layout/Layout"
 import Image from "next/image"
+import NoSSR from "@/components/ui/no-ssr"
 
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isClient, setIsClient] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    // Prevent hydration issues by ensuring client-side only execution
+    const timer = setTimeout(() => {
+      setIsClient(true)
+      // Detect mobile device to prevent hydration issues
+      const isMobileDevice = window.innerWidth < 768 ||
+        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      setIsMobile(isMobileDevice)
+    }, 100) // Small delay to ensure DOM is ready
+
+    return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {
     if (!isClient) return // Prevent hydration issues
-    
+
     const video = videoRef.current
     if (!video) return
 
@@ -74,31 +85,36 @@ export default function Home() {
 
       {/* Hero Section with Video Background */}
       <section className="relative h-screen overflow-hidden">
-        {/* BULLETPROOF Video Background with multiple strategies */}
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            zIndex: 1
-          }}
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-          controls={false}
-          disablePictureInPicture
-        >
-          {/* Reliable video sources - tested and working */}
-          
-          {/* Your custom videos */}
-          <source src="/videos/atdoor-services.mp4" type="video/mp4" />
-          
-          {/* Fallback for very old browsers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white">
-            <p>Your browser does not support video playback</p>
-          </div>
-        </video>
+        {/* BULLETPROOF Video Background with hydration-safe rendering */}
+        <NoSSR fallback={
+          <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800" style={{ zIndex: 1 }}></div>
+        }>
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              zIndex: 1
+            }}
+            muted
+            autoPlay={!isMobile} // Disable autoplay on mobile to prevent hydration issues
+            loop
+            playsInline
+            preload={isMobile ? "none" : "metadata"} // Reduce mobile loading
+            controls={false}
+            disablePictureInPicture
+            suppressHydrationWarning
+          >
+            {/* Reliable video sources - tested and working */}
+
+            {/* Your custom videos */}
+            <source src="/videos/atdoor-services.mp4" type="video/mp4" />
+
+            {/* Fallback for very old browsers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white">
+              <p>Your browser does not support video playback</p>
+            </div>
+          </video>
+        </NoSSR>
         
         {/* Fallback Background Color */}
         <div 
@@ -112,13 +128,13 @@ export default function Home() {
           style={{ zIndex: 2 }}
         ></div>
         {/* Enhanced Content Overlay - Optimized for mobile video visibility */}
-        <div className="absolute bottom-0 left-0 right-0 py-8 md:py-16 lg:py-20 bg-gradient-to-t from-black/60 md:from-black/70 via-black/30 md:via-black/40 to-transparent" style={{ zIndex: 3 }}>
-          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center text-white max-w-6xl">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8 animate-fade-in leading-tight">
+        <div className="absolute bottom-0 left-0 right-0 py-8 md:py-16 lg:py-20 bg-gradient-to-t from-black/60 md:from-black/70 via-black/30 md:via-black/40 to-transparent" style={{ zIndex: 3 }} suppressHydrationWarning>
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center text-white max-w-6xl" suppressHydrationWarning>
+            <h1 className={`text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-6 md:mb-8 leading-tight ${isClient ? 'animate-fade-in' : ''}`}>
               Compassionate Care at Your Doorstep
             </h1>
             {/* Enhanced Action Buttons - Optimized for mobile */}
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center max-w-3xl mx-auto animate-scale-in">
+            <div className={`flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center max-w-3xl mx-auto ${isClient ? 'animate-scale-in' : ''}`}>
               <Button
                 size="lg"
                 className="btn-primary text-base md:text-lg px-6 md:px-10 py-3 md:py-4 rounded-full shadow-2xl hover:shadow-3xl w-full sm:w-auto"
@@ -187,7 +203,7 @@ export default function Home() {
         </div>
         {/* Scroll Down Indicator - Hidden on mobile to show video better */}
         <div className="absolute bottom-32 md:bottom-40 left-1/2 transform -translate-x-1/2 hidden md:block" style={{ zIndex: 4 }}>
-          <div className="animate-bounce">
+          <div className={isClient ? "animate-bounce" : ""}>
             <svg className="w-5 h-5 md:w-6 md:h-6 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
